@@ -4,6 +4,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+// const { VuetifyLoaderPlugin } = require('vuetify-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
@@ -28,6 +29,7 @@ const config = {
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.esm.js',
+      '@': path.resolve(__dirname, 'src/'),
     },
   },
   devtool: 'sourcemap',
@@ -42,6 +44,24 @@ const config = {
         use: ['vue-style-loader', 'css-loader'],
       },
       {
+        test: /\.s(c|a)ss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            // Requires sass-loader@^8.0.0
+            options: {
+              implementation: require('sass'),
+              sassOptions: {
+                fiber: require('fibers'),
+                indentedSyntax: true, // optional
+              },
+            },
+          },
+        ],
+      },
+      {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -49,11 +69,6 @@ const config = {
         },
       },
     ],
-  },
-  resolve: {
-    alias: {
-      vue$: 'vue/dist/vue.esm.js',
-    },
   },
 };
 

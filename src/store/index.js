@@ -5,9 +5,11 @@
 import Vuex from 'vuex';
 import Vue from 'vue';
 import createPersistedState from 'vuex-persistedstate';
-import { sync } from 'vuex-router-sync';
+// import { sync } from 'vuex-router-sync';
 
-import router from '../router/router';
+// import router from '../router';
+
+import navigation from '@/store/modules/navigation';
 
 Vue.use(Vuex);
 
@@ -20,8 +22,11 @@ const store = new Vuex.Store({
   state: {},
   strict: debug,
   plugins,
+  modules: {
+    navigation,
+  },
 });
 
-sync(store, router);
+// sync(store, router);
 
 export default store;

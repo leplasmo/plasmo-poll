@@ -1,26 +1,24 @@
-<!-- @format -->
-
 // ./src/components/App.vue
 
 <template>
-  <div class="app">
-    <div class="header">PlasmoPoll</div>
-    <div class="body"></div>
-  </div>
+  <v-app>
+    <!-- Show the navbar component here -->
+    <Navbar />
+    <!-- Main section -->
+    <v-main class="mx-4 mb-4">
+      <!-- Render the components attached to the routes here -->
+      <router-view></router-view>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-export default {};
+import Navbar from './Navbar.vue';
+
+export default {
+  name: 'App',
+  components: { Navbar },
+};
 </script>
 
-<style>
-.header {
-  padding: 10px;
-  font-size: 25px;
-  background-color: aliceblue;
-  margin-bottom: 5px;
-}
-.body {
-  padding: 5px;
-}
-</style>
+<style></style>

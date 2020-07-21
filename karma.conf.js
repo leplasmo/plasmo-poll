@@ -1,19 +1,18 @@
 // ./karma.conf.js
 
 // Using webpack configuration
-var webpackConfig = require('./webpack.config.js');
+let webpackConfig = require('./webpack.config.js');
+webpackConfig.mode = 'development';
+
 delete webpackConfig.entry; // No entry for tests
 module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine'],
-    files: [
-      'test/**/*.spec.js'
-    ],
-    exclude: [
-    ],
+    files: ['test/**/*.spec.js'],
+    exclude: [],
     preprocessors: {
-      'test/**/*.spec.js': ['webpack']
+      'test/**/*.spec.js': ['eslint', 'webpack'],
     },
     reporters: ['progress'],
     port: 9876,
@@ -26,7 +25,7 @@ module.exports = function (config) {
     webpack: webpackConfig,
     // avoid walls of useless text
     webpackMiddleware: {
-      noInfo: true
-    }
-  })
+      noInfo: true,
+    },
+  });
 };

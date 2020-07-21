@@ -7,6 +7,13 @@ module.exports = {
   env: {
     node: true,
   },
+  globals: {
+    Promise: true,
+    expect: true,
+    it: true,
+    describe: true,
+    jasmine: true,
+  },
   extends: [
     'plugin:vue/essential',
     'plugin:prettier/recommended',

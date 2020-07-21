@@ -2,15 +2,15 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import App from '../components/App.vue';
+import Polls from '../views/Polls.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'App',
-    component: App,
+    name: 'Polls',
+    component: Polls,
   },
 ];
 
